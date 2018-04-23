@@ -1,0 +1,10 @@
+*{
+  margin:0;
+  padding: 0px;
+}
+div{
+  height: 20px;
+  width:100%;
+  background-color:yellow;
+  text-align:center;
+}

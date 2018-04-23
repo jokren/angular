@@ -1,0 +1,16 @@
+*{
+  margin:0;
+  padding: 0px;
+}
+div{
+  width:100%;
+  background-color:red;
+  text-align:center;
+  height:60px;
+}
+p{
+  line-height:30px;
+  font-size:22px;
+  color: #fff;
+  text-align:center;
+}
