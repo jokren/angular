@@ -21,7 +21,7 @@ angular4.0  用cli脚手架直接搭建
  ```file
     import { Http } from '@angular/http'; // (1)步骤1
     import 'rxjs/add/operator/map'; // (2)步骤2 导入RxJS中的map操作符
-    及constructor(private http: Http {}
+    及constructor(private http: Http {}  //(3)步骤3
 
  ```
 
