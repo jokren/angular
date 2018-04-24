@@ -16,6 +16,11 @@ angular4.0  用cli脚手架直接搭建
  ```file
     必须先引入模块,如第三方模块的引入
   ```
+  #### http和module的使用:
+   ```file
+      [(ngModel)]="inputsearch" name="inputsearch"
+      注意:ngModel  必须同时设置name值
+   ```
 
  #### http模块:每个需要使用的组件都要注入:
  ```file
