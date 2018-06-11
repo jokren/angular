@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/weui.css" />
+	</head>
+
+	<body>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			header {
+				background-color: red;
+				color: white;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+		<xheader></xheader>
+		<xsearch></xsearch>
+		<xpannel></xpannel>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp", []);
+			app.component("xheader", {
+				//C
+				controller: function($scope) {
+					//M
+					//接受来自控制器通信的值
+					console.log($scope.$ctrl)
+					$scope.name = "Hello Oaoafly";
+					$scope.testClick = () => {
+						$scope.name = "Bye Oaoafly";
+					}
+				},
+				//V
+				template: `
+					<header>{{name}}</header>
+				`
+			})
+			//双向数据绑定   {{}} 
+			//单项数据绑定   {}
+			app.component("xsearch", {
+				//C
+				controller: function($scope) {
+					//M
+					//接受来自控制器通信的值
+					console.log($scope.$ctrl)
+
+					//data
+					$scope.name = "Hello Oaoafly";
+					$scope.testClick = () => {
+						$scope.name = "Bye Oaoafly";
+					}
+
+					$scope.bool = true
+
+					//methods
+					$scope.toggle = function() {
+						$scope.bool = !$scope.bool
+					}
+					$scope.content = "搜索fhakskfkasfbks"
+				},
+				//V
+				template: `
+					<div name="{{content}}" class="weui-search-bar" ng-class="{'weui-search-bar_focusing':bool}" id="searchBar">
+			            <form class="weui-search-bar__form">
+			                <div class="weui-search-bar__box">
+			                    <i class="weui-icon-search"></i>
+			                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+			                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+			                </div>
+			                <label ng-click="toggle()" class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+			                    <i class="weui-icon-search"></i>
+			                    <span ng-bind="content"></span>
+			                </label>
+			            </form>
+			            <a ng-click="toggle()" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+			        </div>
+				`
+			})
+			//V
+			app.component("xpannel", {
+				//C
+				controller: function($scope) {
+					//M
+					//接受来自控制器通信的值
+					console.log($scope.$ctrl)
+					$scope.name = "Hello Oaoafly";
+					$scope.testClick = () => {
+						$scope.name = "Bye Oaoafly";
+					}
+					$scope.arr = [{
+						title: "标题一",
+						decription: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+					}, {
+						title: "asdasd",
+						decription: "asdasddadddd"
+					}, {
+						title: "kldsjgfldsgj",
+						decription: "23h12ikh3"
+					}]
+					
+					$scope.loadMore = function(){
+						$scope.arr.push({
+							title: "qweqwe",
+							decription: "老姚很帅"
+						})
+					}
+				},
+				//V
+				template: `
+					<div class="weui-panel weui-panel_access">
+			            <div class="weui-panel__hd">图文组合列表</div>
+			            <div class="weui-panel__bd">
+			                <a ng-repeat="a in arr" href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+			                    <div class="weui-media-box__hd">
+			                 
+			                    </div>
+			                    <div class="weui-media-box__bd">
+			                        <h4 class="weui-media-box__title">{{a.title}}</h4>
+			                        <p class="weui-media-box__desc">{{a.decription}}</p>
+			                    </div>
+			                </a>
+			            </div>
+			            <div class="weui-panel__ft">
+			                <a ng-click="loadMore()" href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+			                    <div class="weui-cell__bd">查看更多</div>
+			                    <span class="weui-cell__ft"></span>
+			                </a>    
+			            </div>
+			        </div>
+				`
+			})
+		</script>
+	</body>
+
+</html>

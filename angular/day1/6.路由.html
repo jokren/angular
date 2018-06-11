@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/weui.css" />
+	</head>
+
+	<body>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			header {
+				background-color: red;
+				color: white;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+		<a href="#!/computers">computers</a>
+		<a href="#!/printers">printers</a>
+		<div ng-view></div>
+		<script src="../js/angular.js"></script>
+		<script src="../js/angular-route.js"></script>
+		<script>
+			//require.js  插入路由模块
+			var app = angular.module("ngApp", ['ngRoute']);
+			//配置路由
+			app.config(['$routeProvider', function($routeProvider) {
+				$routeProvider
+					.when('/', {
+						template: '这是首页页面'
+					})
+					.when('/computers', {
+						template: '<computers></computers>'
+					})
+					.when('/printers', {
+						template: '<printers></printers>'
+					})
+					//重定向
+					.otherwise({
+						redirectTo: '/'
+					});
+			}]);
+			app.component("computers", {
+				//C
+				controller: function($scope) {
+					$scope.name = "Hello Oaoafly";
+
+				},
+				//V
+				template: `
+					<div>
+						<xheader></xheader>
+						<xsearch></xsearch>
+						<p>我是computers</p>
+					</div>
+				`
+			})
+			app.component("printers", {
+				//C
+				controller: function($scope) {
+					$scope.name = "Hello Oaoafly";
+
+				},
+				//V
+				template: `
+					<div>
+						<xheader></xheader>
+						<xsearch></xsearch>
+						<p>我是printers</p>
+					</div>
+				`
+			})
+
+			app.component("xheader", {
+				//C
+				controller: function($scope) {
+					$scope.name = "头部组件";
+				},
+				//V
+				template: `
+					<div>
+						<header>{{name}}</header>
+					</div>
+				`
+			})
+			app.component("xsearch", {
+				//C
+				controller: function($scope) {
+					//M
+					//接受来自控制器通信的值
+					console.log($scope.$ctrl)
+
+					//data
+					$scope.name = "Hello Oaoafly";
+					$scope.testClick = () => {
+						$scope.name = "Bye Oaoafly";
+					}
+
+					$scope.bool = true
+
+					//methods
+					$scope.toggle = function() {
+						$scope.bool = !$scope.bool
+					}
+					$scope.content = "搜索fhakskfkasfbks"
+				},
+				//V
+				template: `
+					<div name="{{content}}" class="weui-search-bar" ng-class="{'weui-search-bar_focusing':bool}" id="searchBar">
+			            <form class="weui-search-bar__form">
+			                <div class="weui-search-bar__box">
+			                    <i class="weui-icon-search"></i>
+			                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+			                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+			                </div>
+			                <label ng-click="toggle()" class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+			                    <i class="weui-icon-search"></i>
+			                    <span ng-bind="content"></span>
+			                </label>
+			            </form>
+			            <a ng-click="toggle()" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+			        </div>
+				`
+			})
+		</script>
+	</body>
+
+</html>

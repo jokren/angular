@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="hunanCtrl">
+			<p id="demo">{{name}}</p>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp",[]);
+			app.controller("hunanCtrl",function($scope,$http){
+				console.log(angular);
+				//jQLite jQuery
+				//$.ajax
+				//$.
+				angular.element(document.querySelector("#demo")).css("color","red").addClass("ashkdjbasj")
+				//M
+				$scope.name = "湖南"
+			})
+		</script>
+	</body>
+</html>

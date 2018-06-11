@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--湖南省-->
+		<div ng-controller="hunanCtrl">
+			<!--View-->
+			<p>{{num|currency:"￥"}}</p>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp",[]);
+			//分出来的小作用域  C
+			app.controller("hunanCtrl",function($scope){
+				//M
+				$scope.num = 10000
+			})
+		</script>
+	</body>
+</html>

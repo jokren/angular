@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<xheader></xheader>
+		<!--湖南省-->
+		<div ng-controller="hunanCtrl">
+			<xheader></xheader>
+			<!--View-->
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller="zhejiangCtrl">
+			<!--View-->
+			<p>{{name}}</p>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			console.log(angular);
+			//用angular产生第一个模块  []接受其他的模块
+			//MVC   ModelView    StateView
+
+			//大作用域
+			var app = angular.module("ngApp", []);
+			console.log(app)
+
+			//分出来的小作用域  C
+			app.controller("hunanCtrl", function($scope) {
+				//M
+				$scope.name = "湖南"
+			})
+			app.controller("zhejiangCtrl", function($scope) {
+				//M
+				$scope.name = "浙江"
+			})
+
+			app.component("xheader", {
+				//C
+				controller: function($scope){
+					//M
+					//接受来自控制器通信的值
+					console.log($scope.$ctrl)
+					$scope.name = "Hello Oaoafly";
+					$scope.testClick = () => {
+						$scope.name = "Bye Oaoafly";
+					}
+				},
+				//V
+				template: `
+					<header>{{name}}</header>
+				`
+			})
+			//app.component
+		</script>
+	</body>
+
+</html>

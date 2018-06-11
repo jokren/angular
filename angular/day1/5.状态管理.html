@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--中国-->
+<html ng-app="ngApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<xheader></xheader>
+		<hr />
+		<xfooter></xfooter>
+		<script src="../js/angular.js"></script>
+		<script>
+			//vuex redux 服务来通信
+			var app = angular.module("ngApp",[]);
+			//分出来的小作用域  C
+			app.component("xheader", {
+				//C
+				controller: function($scope,store){
+					//M
+					//接受来自控制器通信的值
+					$scope.name = "头部组件";
+					
+					
+					
+					$scope.changeName = function(){
+						store.name = $scope.name;
+					}
+				},
+				//V
+				template: `
+					<header>{{name}}</header>
+					<input ng-change="changeName()" ng-model="name" />
+				`
+			})
+			
+			app.component("xfooter", {
+				//私有数据
+				//C
+				controller: function($scope,store,tool){
+					//M
+					//接受来自控制器通信的值
+					console.log(tool)
+					$scope.name = "底部组件";
+					$scope.exchange = store
+
+				},
+				//V
+				template: `
+					<header>{{exchange.name}}</header>
+				`
+			})
+			//服务  公有数据
+			app.service("store",function(){
+				return {
+					plus:function(a,b){
+						return a+b
+					},
+					name:"默认名字"
+				}
+			})
+			
+			app.service("tool",function(){
+				return {
+					ajax:function(a,b){
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

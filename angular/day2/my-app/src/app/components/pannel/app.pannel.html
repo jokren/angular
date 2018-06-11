@@ -1,0 +1,24 @@
+<div class="weui-panel weui-panel_access">
+	<div class="weui-panel__hd">图文组合列表</div>
+	<div class="weui-panel__bd">
+		<a *ngFor="let item of items;" href="/detail?id={{item.id}}" class="weui-media-box weui-media-box_appmsg">
+			<div class="weui-media-box__hd">
+				<img class="weui-media-box__thumb" src="{{item.author.avatar_url}}" alt="">
+			</div>
+			<div class="weui-media-box__bd">
+				<h4 class="weui-media-box__title">{{item.title}}</h4>
+				<p class="weui-media-box__desc">{{item.author.loginname}}</p>
+			</div>
+		</a>
+	</div>
+	<div class="weui-panel__ft" [ngStyle]="{'display':dataService.bool?'none':'block'}">
+		<a (click)="loadMore()" href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+			<div class="weui-cell__bd">查看更多</div>
+			<span class="weui-cell__ft"></span>
+		</a>
+	</div>
+	<div class="weui-loadmore" [ngStyle]="{'display':!dataService.bool?'none':'block'}">
+		<i class="weui-loading"></i>
+		<span class="weui-loadmore__tips">正在加载</span>
+	</div>
+</div>

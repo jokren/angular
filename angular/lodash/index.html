@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="../js/lodash.js"></script>
+		<script>
+			/*$
+									_*/
+			console.log(_)
+			var arr = _.chunk(['a', 'b', 'c', 'd'], 2);
+			console.log(arr)
+
+			var time = _.now()
+			console.log(time);
+
+			var saves = ['profile', 'settings','adhkaskdaks','dasdasdas'];
+
+			var done = _.after(saves.length, function() {
+				console.log('done saving!');
+			});
+
+			_.forEach(saves, function(type) {
+				console.log(type)
+				done();
+			});
+		</script>
+	</body>
+
+</html>
