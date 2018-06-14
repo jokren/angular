@@ -1,0 +1,33 @@
+<html ng-app="exampleApp">  
+<head>  
+    <meta charset="utf-8">  
+    <title>jqLite 测试</title>  
+    <script src="angular.js"></script>  
+    <link href="bootstrap.css" rel="stylesheet" />  
+    <link href="bootstrap-theme.css" rel="stylesheet" />  
+    <script>  
+        angular.module("exampleApp", [])  
+            .directive("demoDirective", function () {  
+                return function (scope, element, attrs) {  
+                    var items = element.children();  
+                    for (var i = 0; i < items.length; i++) {  
+                        if (items.eq(i).text() == "Kobe Bryant") {  
+                            items.eq(i).css("font-weight", "bold");  
+                        }   
+                    }  
+                }  
+            })  
+            .controller("defaultCtrl", function ($scope) {  
+                // controller defines no data or behaviors  
+            })                
+    </script>  
+</head>  
+<body ng-controller="defaultCtrl">  
+    <h3 class="panel panel-info">NBA stars</h3>  
+    <ol demo-directive class="list-group">  
+        <li class="list-group-item">Kobe Bryant</li>  
+        <li class="list-group-item">Tim Duncan</li>  
+        <li class="list-group-item">Tracy McGrady</li>  
+    </ol>  
+</body>  
+</html>  

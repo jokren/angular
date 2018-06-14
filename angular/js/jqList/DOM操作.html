@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html ng-app="elementExample">
+	<head>	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+		<script src="angular.js"></script>
+		<script>
+		function button1()
+		{		
+				alert(angular.element('<div id="test">测试html元素内容作为参数</div>').html());	
+		}	
+		//使用DOM元素作为参数	
+		function button2()
+		{		
+			var a = document.getElementById('myId');		
+			alert(angular.element(a).html());	
+		}	
+		</script>
+	</head>
+	<body>
+		<br/>
+		使用html字符串为参数<input type="button" onclick="button1()" value="button1"></input><br/>
+		<div name="email" id="myId">使用DOM元素作为参数</div><input type="button" onclick="button2()" value="button2"></input>
+	</body>	
+</html>
